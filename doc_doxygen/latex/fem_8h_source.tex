@@ -1,0 +1,77 @@
+\hypertarget{fem_8h_source}{}\doxysection{fem.\+h}
+\label{fem_8h_source}\index{src/fem.h@{src/fem.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{//}}
+\DoxyCodeLine{2 \textcolor{comment}{// Created by Roman Wallner-\/ Silberhuber on 22.04.23.}}
+\DoxyCodeLine{3 \textcolor{comment}{//}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#ifndef SIMPLEFEMCPP\_FEM\_H}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#define SIMPLEFEMCPP\_FEM\_H}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{comment}{// Eigen}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <Eigen/Dense>}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include <Eigen/Sparse>}}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{comment}{// C++}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include <array>}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#include <cmath>}}
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{19 \textcolor{preprocessor}{\#include <tuple>}}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23 \textcolor{comment}{// Fast Matrix Market}}
+\DoxyCodeLine{24 \textcolor{preprocessor}{\#include "{}fast\_matrix\_market/fast\_matrix\_market.hpp"{}}}
+\DoxyCodeLine{25 \textcolor{preprocessor}{\#include "{}fast\_matrix\_market/app/Eigen.hpp"{}}}
+\DoxyCodeLine{26 \textcolor{preprocessor}{\#include "{}fem.h"{}}}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{32 \textcolor{keyword}{class }\mbox{\hyperlink{class_fem_params}{FemParams}}}
+\DoxyCodeLine{33 \{}
+\DoxyCodeLine{34 \textcolor{keyword}{public}:}
+\DoxyCodeLine{38     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_fem_params_a428fa1a6165a112bb8d9882bd58c2af5}{mesh\_ex}};  }
+\DoxyCodeLine{39     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_fem_params_a5d62e6148fd6428d409e606a8988c3a6}{mesh\_ey}};  }
+\DoxyCodeLine{40     \textcolor{keywordtype}{double} mesh\_lx;}
+\DoxyCodeLine{41     \textcolor{keywordtype}{double} mesh\_ly;}
+\DoxyCodeLine{42     \textcolor{keywordtype}{int} mesh\_nx;}
+\DoxyCodeLine{43     \textcolor{keywordtype}{int} mesh\_ny;}
+\DoxyCodeLine{44     \textcolor{keywordtype}{int} num\_nodes;}
+\DoxyCodeLine{45     \textcolor{keywordtype}{int} num\_elements;}
+\DoxyCodeLine{46     \textcolor{keywordtype}{double} mesh\_hx;}
+\DoxyCodeLine{47     \textcolor{keywordtype}{double} mesh\_hy;}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{50 }
+\DoxyCodeLine{53     \mbox{\hyperlink{class_fem_params_af6694db6722907a17c2ff5132467d1d6}{FemParams}}(\textcolor{keywordtype}{int} ex = 9, \textcolor{keywordtype}{int} ey = 49, \textcolor{keywordtype}{double} lx = 10.0, \textcolor{keywordtype}{double} ly = 50.0);}
+\DoxyCodeLine{54 \};}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{56 \textcolor{keyword}{class }\mbox{\hyperlink{class_material_params}{MaterialParams}}}
+\DoxyCodeLine{57 \{}
+\DoxyCodeLine{58 \textcolor{keyword}{public}:}
+\DoxyCodeLine{59     \textcolor{keywordtype}{double} E;}
+\DoxyCodeLine{60     \textcolor{keywordtype}{double} v;}
+\DoxyCodeLine{61 }
+\DoxyCodeLine{62     \mbox{\hyperlink{class_material_params}{MaterialParams}}(\textcolor{keywordtype}{double} c\_E = 100.0, \textcolor{keywordtype}{double} c\_v = 0.48);}
+\DoxyCodeLine{63 \};}
+\DoxyCodeLine{64 }
+\DoxyCodeLine{65 }
+\DoxyCodeLine{66 \textcolor{keyword}{template}<\textcolor{keyword}{typename} T, \textcolor{keywordtype}{int} Rows, \textcolor{keywordtype}{int} Cols>}
+\DoxyCodeLine{67 std::array<std::array<T, Cols>, Rows> eigenArrayToCppArray( \textcolor{keyword}{const} Eigen::Array<T, Rows, Cols>\& eigenArray );}
+\DoxyCodeLine{68 }
+\DoxyCodeLine{69 }
+\DoxyCodeLine{70 Eigen::Vector4d shape(\textcolor{keywordtype}{double} xi, \textcolor{keywordtype}{double} eta);}
+\DoxyCodeLine{71 }
+\DoxyCodeLine{72 }
+\DoxyCodeLine{73 Eigen::Matrix<double, 2, 4> grad\_shape(\textcolor{keywordtype}{double} xi, \textcolor{keywordtype}{double} eta);}
+\DoxyCodeLine{74 }
+\DoxyCodeLine{75 }
+\DoxyCodeLine{76 std::tuple <Eigen::MatrixXd, Eigen::MatrixXi> create\_mesh(\textcolor{keyword}{const} \mbox{\hyperlink{class_fem_params}{FemParams}} \&fem\_params);}
+\DoxyCodeLine{77 }
+\DoxyCodeLine{78 }
+\DoxyCodeLine{79 Eigen::Matrix3d material\_matrix(\textcolor{keyword}{const} \mbox{\hyperlink{class_material_params}{MaterialParams}} \&mat\_params);}
+\DoxyCodeLine{80 }
+\DoxyCodeLine{81 \textcolor{preprocessor}{\#endif }\textcolor{comment}{//SIMPLEFEMCPP\_FEM\_H}}
+
+\end{DoxyCode}
